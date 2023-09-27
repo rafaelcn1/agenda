@@ -40,4 +40,8 @@ public class PessoaService {
 		this.pessoaRepository.delete(pessoa);
 	}
 
+	public Pessoa buscarPessoaPorUsuario(String usuario) {
+		return this.pessoaRepository.findByUsuario(usuario).get();
+	}
+
 }

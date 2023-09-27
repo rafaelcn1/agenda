@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.agenda.dto.PessoaDTO;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,10 +30,18 @@ public class Pessoa implements Serializable {
 	private String nome;
 	private Date dataNascimento;
 
+	@Column(unique = true, nullable = false)
+	private String usuario;
+
+	@Column(unique = true, nullable = false)
+	private String senha;
+
 	public Pessoa(PessoaDTO pessoaDTO) {
 		this.id = pessoaDTO.getId();
 		this.nome = pessoaDTO.getNome();
 		this.dataNascimento = pessoaDTO.getDataNascimento();
+		this.usuario = pessoaDTO.getUsuario();
+		this.senha = pessoaDTO.getSenha();
 	}
 
 }

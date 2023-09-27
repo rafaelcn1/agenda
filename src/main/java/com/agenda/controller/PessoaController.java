@@ -54,4 +54,10 @@ public class PessoaController {
 	public void deletarPessoa(@PathVariable Integer id) throws Exception {
 		this.pessoaService.deletarPessoa(id);
 	}
+	
+	@GetMapping("/usuario")
+	public ResponseEntity<Pessoa> buscarPessoaPorUsuario(@RequestBody PessoaDTO pessoaDTO) throws Exception {
+		Pessoa pessoa = this.pessoaService.buscarPessoaPorUsuario(pessoaDTO.getUsuario());
+		return new ResponseEntity<Pessoa>(pessoa, HttpStatus.OK);
+	}
 }
