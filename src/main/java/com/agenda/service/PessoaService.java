@@ -29,4 +29,10 @@ public class PessoaService {
 
 	}
 
+	public Pessoa editarPessoa(PessoaDTO pessoaDTO) throws Exception {
+		Pessoa pessoaEditada = this.buscarPessoaPorId(pessoaDTO.getId());
+		pessoaEditada = new Pessoa(pessoaDTO);
+		return this.pessoaRepository.save(pessoaEditada);
+	}
+
 }

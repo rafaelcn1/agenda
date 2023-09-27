@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,9 +26,8 @@ public class PessoaController {
 
 	@PostMapping
 	public ResponseEntity<Pessoa> criarPessoa(@RequestBody PessoaDTO pessoaDTO) {
-		Pessoa novoUsuario = this.pessoaService.criarPessoa(pessoaDTO);
-		return new ResponseEntity<Pessoa>(novoUsuario, HttpStatus.CREATED);
-
+		Pessoa novaPessoa = this.pessoaService.criarPessoa(pessoaDTO);
+		return new ResponseEntity<Pessoa>(novaPessoa, HttpStatus.CREATED);
 	}
 
 	@GetMapping
@@ -43,4 +43,9 @@ public class PessoaController {
 		return new ResponseEntity<Pessoa>(pessoa, HttpStatus.OK);
 	}
 
+	@PutMapping
+	public ResponseEntity<Pessoa> editarPessoa(@RequestBody PessoaDTO pessoaDTO) throws Exception {
+		Pessoa pessoaEditada = this.pessoaService.editarPessoa(pessoaDTO);
+		return new ResponseEntity<Pessoa>(pessoaEditada, HttpStatus.CREATED);
+	}
 }

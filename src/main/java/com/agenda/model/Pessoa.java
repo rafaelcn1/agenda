@@ -1,7 +1,6 @@
 package com.agenda.model;
 
 import java.io.Serializable;
-import java.text.ParseException;
 import java.util.Date;
 
 import com.agenda.dto.PessoaDTO;
@@ -30,7 +29,8 @@ public class Pessoa implements Serializable {
 	private String nome;
 	private Date dataNascimento;
 
-	public Pessoa(PessoaDTO pessoaDTO) throws ParseException {
+	public Pessoa(PessoaDTO pessoaDTO) {
+		this.id = pessoaDTO.getId();
 		this.nome = pessoaDTO.getNome();
 		this.dataNascimento = pessoaDTO.getDataNascimento();
 	}

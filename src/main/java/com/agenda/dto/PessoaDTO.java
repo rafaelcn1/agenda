@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PessoaDTO {
 
+	private Integer id;
 	private String nome;
 	private Date dataNascimento;
 
