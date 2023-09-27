@@ -1,6 +1,6 @@
 package com.agenda.service;
 
-import java.text.ParseException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,11 +15,13 @@ public class PessoaService {
 	@Autowired
 	private PessoaRepository pessoaRepository;
 
-	public Pessoa criarPessoa(PessoaDTO pessoaDTO) throws ParseException {
+	public Pessoa criarPessoa(PessoaDTO pessoaDTO) {
 		Pessoa novaPessoa = new Pessoa(pessoaDTO);
 		return this.pessoaRepository.save(novaPessoa);
 	}
 
-	
+	public List<Pessoa> listarTodasPessoas() {
+		return this.pessoaRepository.findAll();
+	}
 
 }
