@@ -35,4 +35,9 @@ public class PessoaService {
 		return this.pessoaRepository.save(pessoaEditada);
 	}
 
+	public void deletarPessoa(Integer id) throws Exception {
+		Pessoa pessoa = this.buscarPessoaPorId(id);
+		this.pessoaRepository.delete(pessoa);
+	}
+
 }
