@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,12 @@ public class PessoaController {
 		List<Pessoa> listarTodasPessoas = this.pessoaService.listarTodasPessoas();
 		return new ResponseEntity<List<Pessoa>>(listarTodasPessoas, HttpStatus.OK);
 
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Pessoa> buscarPessoaPorId(@PathVariable Integer id) throws Exception {
+		Pessoa pessoa = this.pessoaService.buscarPessoaPorId(id);
+		return new ResponseEntity<Pessoa>(pessoa, HttpStatus.OK);
 	}
 
 }

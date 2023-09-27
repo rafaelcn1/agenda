@@ -24,4 +24,9 @@ public class PessoaService {
 		return this.pessoaRepository.findAll();
 	}
 
+	public Pessoa buscarPessoaPorId(Integer id) throws Exception {
+		return this.pessoaRepository.findById(id).get();
+
+	}
+
 }
