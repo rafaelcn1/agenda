@@ -1,15 +1,21 @@
 package com.agenda.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.agenda.dto.PessoaDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,8 +39,12 @@ public class Pessoa implements Serializable {
 	@Column(unique = true, nullable = false)
 	private String usuario;
 
-	@Column(unique = true, nullable = false)
+	@Column(nullable = false)
 	private String senha;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
+	private List<Contato> contatos = new ArrayList<Contato>();
 
 	public Pessoa(PessoaDTO pessoaDTO) {
 		this.id = pessoaDTO.getId();
@@ -42,6 +52,7 @@ public class Pessoa implements Serializable {
 		this.dataNascimento = pessoaDTO.getDataNascimento();
 		this.usuario = pessoaDTO.getUsuario();
 		this.senha = pessoaDTO.getSenha();
+		this.contatos = pessoaDTO.getContatos();
 	}
 
 }
