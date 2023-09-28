@@ -2,7 +2,7 @@ package com.agenda.model;
 
 import java.io.Serializable;
 
-import com.agenda.dto.PessoaDTO;
+import com.agenda.dto.ContatoDTO;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,6 +37,12 @@ public class Contato implements Serializable {
 	@Override
 	public String toString() {
 		return "Contato [id=" + id + ", telefone=" + telefone + ", email=" + email + "]";
+	}
+
+	public Contato(ContatoDTO contatoDTO) {
+		this.telefone = contatoDTO.getTelefone();
+		this.email = contatoDTO.getEmail();
+		this.pessoa = contatoDTO.getPessoa();
 	}
 
 }
