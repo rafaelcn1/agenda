@@ -1,23 +1,30 @@
 package com.agenda.dto;
 
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.agenda.model.Contato;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PessoaDTO {
+@Data
+public class PessoaDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String nome;
-	private Date dataNascimento;
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private LocalDate dataNascimento;
 	private String usuario;
 	private String senha;
 

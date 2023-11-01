@@ -1,13 +1,13 @@
 package com.agenda.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.agenda.dto.PessoaDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -34,7 +34,8 @@ public class Pessoa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	private Date dataNascimento;
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private LocalDate dataNascimento;
 
 	@Column(unique = true, nullable = false)
 	private String usuario;
