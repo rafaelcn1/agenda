@@ -3,6 +3,7 @@ package com.agenda.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.agenda.dto.PessoaDTO;
@@ -40,8 +41,8 @@ public class PessoaService {
 		this.pessoaRepository.delete(pessoa);
 	}
 
-	public Pessoa buscarPessoaPorUsuario(String usuario) {
-		return this.pessoaRepository.findByUsuario(usuario).get();
+	public UserDetails buscarPessoaPorUsuario(String usuario) {
+		return this.pessoaRepository.findByUsuario(usuario);
 	}
 
 }

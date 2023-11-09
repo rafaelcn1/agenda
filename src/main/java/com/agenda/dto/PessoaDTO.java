@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.agenda.model.Contato;
+import com.agenda.model.UsuarioRole;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
@@ -27,6 +28,7 @@ public class PessoaDTO implements Serializable {
 	private LocalDate dataNascimento;
 	private String usuario;
 	private String senha;
+	private UsuarioRole role;
 
 	private List<Contato> contatos = new ArrayList<Contato>();
 
